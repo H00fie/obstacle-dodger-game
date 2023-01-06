@@ -7,7 +7,9 @@ public class Scorer : MonoBehaviour
     int hits = 0;
 
     private void OnCollisionEnter(Collision other) {
-        hits++;
-        Debug.Log("You have bumped into an obstacle " + hits + " times.");
+        if(other.gameObject.tag != "Bonked"){
+            hits++;
+            Debug.Log("You have bumped into an obstacle " + hits + " times.");
+        }
     }
 }

@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 269999195}
   - component: {fileID: 269999196}
   - component: {fileID: 269999197}
+  - component: {fileID: 269999198}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -265,6 +266,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 5
+--- !u!114 &269999198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269999190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b05c7dea3b4346419b7e2e746944cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &331557860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,7 +1343,7 @@ GameObject:
   - component: {fileID: 1654365214}
   m_Layer: 0
   m_Name: Player (Elusi)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
