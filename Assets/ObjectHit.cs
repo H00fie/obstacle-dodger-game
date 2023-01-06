@@ -12,7 +12,6 @@ public class ObjectHit : MonoBehaviour
     //As long as the collision box of the player is inside the collision box of the wall, the message will not be repeated. If I move away
     //and drive into the wall again (if the collision boxes were separated), then the message will be dispalyed again.
    private void OnCollisionEnter(Collision other) {
-        Debug.Log("Bumped into a wall!");
         //I want a wall to change the colour when the player bumps into it. In order to do it, I need to reach for the MeshRenderer. It makes
         //the object look like the Material that was added to it.
         //This is a method of type MeshRenderer. I want to access the material section and then the colour property.
