@@ -25,6 +25,16 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         MovePlayer();
+    }
+
+    void PrintInstructions(){
+        Debug.Log("Welcome to the game!");
+        Debug.Log("Move Elusi with 'WSAD' or arrow keys.");
+        Debug.Log("Don't hit the walls!");
+    }
+
+    void MovePlayer(){
         //'transform' means I am accessing the transform section of the game object. I have moved this script onto the object within Unity - that's how a particular
         //script connects to the particular object.
         //'Translate' needs me to tell it where I want it to go on the x, y and z. But 'Translate' needs to see a number. It won't change the values into the ones
@@ -55,12 +65,6 @@ public class Mover : MonoBehaviour
         //'moveSpeed' is my custom variable to just speed the movement up a bit.
         float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         float zValue = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-        transform.Translate(xValue, 0, zValue); 
-    }
-
-    void PrintInstructions(){
-        Debug.Log("Welcome to the game!");
-        Debug.Log("Move Elusi with 'WSAD' or arrow keys.");
-        Debug.Log("Don't hit the walls!");
+        transform.Translate(xValue, 0, zValue);
     }
 }
