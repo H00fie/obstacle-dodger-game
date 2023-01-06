@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
+    //I do not need to call Start() nor Update() methods myself, Unity does it for me at the right time. If there is anything defined within Start(), it will
+    //be triggered upon hitting the Play button in Unity and if there's anything in Update(), it will be called every single frame.
+    //Start() and Update() are referred to as "callbacks".
+
     //Adding the [SerializeField] before a field makes it available in the Inspector in Unity. I can select the game object to which the script is assigned
     //and the script's section within the Inspector should present the field.
     // [SerializeField] float xValue = 0;
@@ -15,7 +19,7 @@ public class Mover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PrintInstructions();
     }
 
     // Update is called once per frame
@@ -52,5 +56,11 @@ public class Mover : MonoBehaviour
         float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         float zValue = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
         transform.Translate(xValue, 0, zValue); 
+    }
+
+    void PrintInstructions(){
+        Debug.Log("Welcome to the game!");
+        Debug.Log("Move Elusi with 'WSAD' or arrow keys.");
+        Debug.Log("Don't hit the walls!");
     }
 }
