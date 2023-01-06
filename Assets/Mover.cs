@@ -10,6 +10,8 @@ public class Mover : MonoBehaviour
     // [SerializeField] float yValue = 0.01f;
     // [SerializeField] float zValue = 0;
 
+    [SerializeField] float moveSpeed = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,21 @@ public class Mover : MonoBehaviour
 
         //I can store the input in variables. They can't be declared as class' fields because they need to respond to the actions of the player - they need to be
         //updated dynamically. The Y Axis is hardcoded to 0 because I don't want the player to be able to dig or fly.
-        float xValue = Input.GetAxis("Horizontal");
-        float zValue = Input.GetAxis("Vertical");
-        transform.Translate(xValue, 0, zValue);
+        // float xValue = Input.GetAxis("Horizontal");
+        // float zValue = Input.GetAxis("Vertical");
+        // transform.Translate(xValue, 0, zValue);
+
+        //The player's movement should be framerate-independent. In the game screen, in the stats tab, I can see the graphics section with the count of frames per
+        //second. The code above means the movement should happen upon the Update which depends on one's computer's speed. It might be 20 FPS on a slow computer and
+        //100 FPS on a fast computer which means the player's movement will be different depending on the machine.
+        //The solution is using 'Time.deltaTime'. If I use it, Unity can tell me how long each frame took to execute. If I want to move one unity to the left on Update,
+        //a slow machine that has 10 FPS, a duration of the frame will take 0.1s. On a fast machine with 100 FPS the duration of the frame is 0.01s.
+        //To calculate the distance per second that is going to be the same regardless of the speed of the machine, I take the number of units of movement, multiple it
+        //by the FPS AND THEN multiple it by the duration of the frame, so it's 1 x 10 x 0.1 = 1 for the slow machine and 1 x 100 x 0.01 = 1 for the fast one. Both
+        //machines get the same result.
+        //'moveSpeed' is my custom variable to just speed the movement up a bit.
+        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        float zValue = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        transform.Translate(xValue, 0, zValue); 
     }
 }
